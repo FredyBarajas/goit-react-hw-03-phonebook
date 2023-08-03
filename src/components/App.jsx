@@ -12,6 +12,25 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    let localContacts = JSON.parse(localStorage.getItem('localContacts'));
+    console.log(localContacts);
+    console.log(this.state.contacts);
+    if (localContacts) {
+      this.setState({ contacts: localContacts });
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      Array.isArray(this.state.contacts) &&
+      this.state.contacts !== prevState.contacts
+    ) {
+      localStorage.setItem(
+        'localContacts',
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
   addContact = newContact => {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],

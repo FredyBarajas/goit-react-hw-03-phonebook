@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import { Form, FormLabel, FormInput, Formbutton } from './StyledFormulario';
 
 class Formulario extends Component {
+  static propTypes = {
+    addContact: PropTypes.func,
+    contacts: PropTypes.array,
+  };
+
   constructor(props) {
     super(props);
     this.state = {

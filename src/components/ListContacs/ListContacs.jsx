@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { List, ListItem, ListName, ListNumber, ListDelete } from './StyledList';
 
 const ListContacts = ({ contacts, onDeleteContact }) => {
@@ -13,6 +14,11 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
       ))}
     </List>
   );
+};
+
+ListContacts.propTypes = {
+  onDeleteContact: PropTypes.func,
+  contacts: PropTypes.array,
 };
 
 export default ListContacts;
